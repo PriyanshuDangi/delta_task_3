@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        color: white;
+      }
+      .main {
+        background-color: #111;
+        margin-bottom: 40px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        padding-top: 30px;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        justify-content: space-between;
+        /* align-items: center; */
+      }
+      .container img {
+        width: 70%;
+      }
+      .flexitems {
+        width: 350px;
+        margin: auto;
+        font-size: 24px;
+        text-align: center;
+      }
+      .details {
+        padding-bottom: 50px;
+      }
+      .details span {
+        margin-bottom: 20px;
+      }
+      .update {
+        width: 500px;
+        text-align: center;
+      }
+
+      .update a {
+        text-decoration: none;
+        color: white;
+        font-size: 28px;
+        padding: 5px 10px;
+        background-color: #4caf50;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+      }
+
+      .update a:hover {
+        background-color: #3e8e41;
+        font-size: 30px;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(0, 0, 0, 0.19);
+      }
+    </style>
+    <div class="main">
+      <div class="container">
+        <div class="flexitems">
+          <div id="avatar">
+            <% if(myself.gender == "female"){ %>
+            <img
+              src="/assets/images/img_avatar2.png"
+              alt="Avatar"
+              class="avatar"
+            />
+            <% }else{ %>
+            <img
+              src="/assets/images/img_avatar.png"
+              alt="Avatar"
+              class="avatar"
+            />
+            <% } %>
+          </div>
+          <h1><%= myself.name %></h1>
+        </div>
+        <div class="flexitems details">
+          <p>
+            <span>Email: </span>
+            <span><%= myself.email %></span>
+          </p>
+          <p>
+            <span>Age: </span>
+            <span><%= myself.age %></span>
+          </p>
+          <p>
+            <span>Events Created: </span>
+            <span><%= eventsCreated %></span>
+          </p>
+          <p>
+            <span>Events Accepted: </span>
+            <span><%= myself.accepted.length%> </span>
+          </p>
+        </div>
+        <!-- <div class="break"></div> -->
+        <div class="flexitems update">
+          <a href="/dashboard">
+            Back To Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

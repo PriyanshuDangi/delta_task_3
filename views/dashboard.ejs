@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashBoard</title>
+    <!-- icons -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+      .main {
+        padding: 0;
+      }
+      .container {
+        margin-top: 2vh;
+      }
+      .created {
+        display: block;
+      }
+      .accepted {
+        display: none;
+      }
+      .heading {
+        font-size: 35px;
+        text-align: center;
+      }
+      .eventContainer {
+        margin-bottom: 15px;
+        margin-left: 20px;
+      }
+      .eventContainer .title {
+        font-size: 26px;
+      }
+      /* .eventContainer .icons {
+            float: right;
+        } */
+      .eventContainer a {
+        color: blue;
+      }
+      body {
+        margin: 0;
+      }
+      .bar {
+        width: 100%;
+        background-color: black;
+        color: white;
+        margin: 0;
+        /* margin-left: -10px;
+            margin-right: -10px; */
+      }
+      .bar-item {
+        cursor: pointer;
+        padding: 8px 16px;
+        height: 100%;
+        margin: 0;
+        background-color: black;
+        color: white;
+        font-size: 24px;
+        border: none;
+        outline: 0;
+      }
+      .white {
+        background-color: white;
+        color: black;
+      }
+      @media screen and (max-width: 500px) {
+        #btn {
+          left: 5px;
+          top: 5px;
+        }
+        #btn div {
+          width: 30px;
+        }
+        .bar {
+          padding-left: 35px;
+          width: 100%;
+        }
+        .bar-item {
+          font-size: 16px;
+        }
+        .main .title {
+          font-size: 16px;
+        }
+      }
+    </style>
+    <div class="main">
+      <div class="bar">
+        <button class="bar-item white" id="createdBtn">Created Event</button>
+        <button class="bar-item" id="acceptedBtn">Accepted Event</button>
+      </div>
+      <%- include('partials/flash') %>
+      <div class="container">
+        <div class="flexitems created">
+          <!-- <h2 class="heading">Created Event</h2> -->
+          <% for(let i=0 ; i < myself.event.length; i++ ) {%>
+          <div class="eventContainer">
+            <span class="title"><%= myself.event[i].title %></span> &nbsp;
+            <span class="icons">
+              <a href="/event/view/<%= myself.event[i]._id %>"
+                ><i class="fa fa-info" title="information"></i
+              ></a>
+              &nbsp;
+              <a href="/event/invite/<%= myself.event[i]._id %>"
+                ><i class="fa fa-share" title="invite"></i
+              ></a>
+              &nbsp;
+              <a href="/event/attendance/<%= myself.event[i]._id %>"
+                ><i class="fa fa-user-plus" title="Attendance"></i
+              ></a>
+              &nbsp;
+              <a href="/event/edit/<%= myself.event[i]._id %>"
+                ><i class="fa fa-pencil" title="edit"></i
+              ></a>
+              &nbsp;
+              <a href="/event/delete/<%= myself.event[i]._id %>"
+                ><i class="fa fa-trash" title="delete"></i
+              ></a>
+              &nbsp;
+            </span>
+          </div>
+          <% } %>
+        </div>
+
+        <div class="flexitems accepted">
+          <!-- <h2 class="heading">Accepted Event</h2> -->
+          <% for(let j=0 ; j < acceptedEvents.length; j++ ) {%>
+          <div class="eventContainer">
+            <span class="title"><%= acceptedEvents[j].title %></span> &nbsp;
+            <span class="icons" style="width: 40px;">
+              <a href="/addEvent/<%= acceptedEvents[j]._id %>"
+                ><i class="fa fa-calendar" title="google-calendar"></i></a
+              >&nbsp;
+              <a href="/event/other/view/<%= acceptedEvents[j]._id %>"
+                ><i class="fa fa-envelope" title="invitation"></i></a
+              >&nbsp;
+            </span>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <script>
+      var createdBtn = document.getElementById("createdBtn");
+      var acceptedBtn = document.getElementById("acceptedBtn");
+      var created = document.querySelector(".created");
+      var accepted = document.querySelector(".accepted");
+      createdBtn.addEventListener("click", () => {
+        created.style.display = "block";
+        accepted.style.display = "none";
+        createdBtn.classList.add("white");
+        acceptedBtn.classList.remove("white");
+      });
+
+      acceptedBtn.addEventListener("click", () => {
+        created.style.display = "none";
+        accepted.style.display = "block";
+        acceptedBtn.classList.add("white");
+        createdBtn.classList.remove("white");
+      });
+    </script>
+    <script src="/js/sidenavbar.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 450px;
+        margin: auto;
+    }
+    form {
+        border: 3px solid #f1f1f1;
+        max-width: 420px;
+        margin: auto;
+    }
+
+    input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+
+    button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    }
+
+    button[type=submit]:hover {
+    opacity: 0.8;
+    }
+
+    .container {
+    padding: 16px;
+    max-width: 400px;
+    align-items: center;
+    align-content: center;
+    }
+
+    .main h1 {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <%- include('partials/sidenavbar') %>
+    <div class="main">
+        <h1>Update </h2>
+    <form action="/me/profile/update" method="POST">
+        <%- include('partials/flash') %>
+
+        <div class="container">
+            <div>
+                <label for="name"><b>Name</b></label>
+                <input type="name" id="name" name="name" placeholder="enter-name" value="<%= myself.name%>" required>
+            </div>
+
+            <!-- <div>
+                <label for="email"><b>Email</b></label>
+                <input type="email" id="email" name="email" placeholder="enter-email" required>
+            </div> -->
+
+            <div>
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" id="password" placeholder="enter password" required minlength="7"> 
+            </div>
+            
+            
+            <div>
+                <label for="age"><b>Age</b></label>
+                <input type="number" name="age" id="age" placeholder="enter your age" value="<%= myself.age %>" min="13" step="1" required>
+            </div>
+
+            <button type="submit">Update</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

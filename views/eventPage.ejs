@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+      body {
+        margin: 0;
+      }
+      .main {
+        background-color: #555;
+        min-height: 100vh;
+      }
+      #customBoxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: auto;
+        width: 100%;
+        max-width: 400px;
+        height: 500px;
+      }
+      .flexitems {
+        width: 150px;
+        cursor: pointer;
+        text-align: center;
+        /* background-color: white; */
+        /* height: 150px; */
+        /* background-color: black; */
+        /* border: 1px black solid ; */
+      }
+      .flexitems img {
+        width: 150px;
+        height: 150px;
+      }
+      .flexitems span {
+        font-size: 20px;
+        font: typeface;
+      }
+    </style>
+    <div class="main">
+      <%- include('partials/flash') %>
+      <div id="customBoxes">
+        <div class="flexitems" onclick="location.href='/event/create/blank'">
+          <img src="/assets/custom/customBlank.png" alt="" />
+          <Span>Blank</Span>
+        </div>
+        <div class="flexitems" onclick="location.href='/event/create/birthday'">
+          <img src="/assets/custom/customBirthday.PNG" alt="" />
+          <span>BirthDay</span>
+        </div>
+        <div class="flexitems" onclick="location.href='/event/create/wedding'">
+          <img src="/assets/custom/weddingCustom.PNG" alt="" />
+          <span>Wedding</span>
+        </div>
+        <div class="flexitems" onclick="location.href='/event/create/funeral'">
+          <img src="/assets/custom/funeralCustom.PNG" alt="" />
+          <span>Funeral</span>
+        </div>
+      </div>
+    </div>
+    <script src="/js/sidenavbar.js"></script>
+  </body>
+</html>

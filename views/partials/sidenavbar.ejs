@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/buttonStyle.css">
+<link rel="stylesheet" href="/css/sidenavbar.css">
+<div id="btn">
+	<div id='top'></div>
+	<div id='middle'></div>
+	<div id='bottom'></div>
+</div>
+<div class="sidenav">
+    <div id="avatar">
+      <% if(myself.gender == "female"){ %>
+        <img src="/assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+      <% }else{ %>
+        <img src="/assets/images/img_avatar.png" alt="Avatar" class="avatar">
+      <% } %>
+    </div>
+    <p id="navname"><%= myself.name %></p>
+    <p id="navemail"><%= myself.email %></p>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/event/create">Create Event</a>
+    <a href="/notification">
+      <span class="notification">Notification</span>
+      <% if(notificationCount > 0){ %>
+        (<span class="badge"><%= notificationCount %></span>)
+      <% } %>
+    </a>
+    <a href="/me/profile">Profile</a>
+    <a href="/logout">Logout</a>
+</div>

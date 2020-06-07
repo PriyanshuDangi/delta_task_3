@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+        .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        }
+
+        .email {
+        color: grey;
+        font-size: 18px;
+        }
+
+        button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        }
+
+        button:hover, a:hover {
+        opacity: 0.7;
+        }
+    </style>
+    <div class="main">
+        <div class="profile">
+            <div class="card">
+                <% if(otherUser.gender == "female"){ %>
+                    <img src="/assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+                  <% }else{ %>
+                    <img src="/assets/images/img_avatar.png" alt="Avatar" class="avatar">
+                  <% } %>
+                <h1><%= otherUser.name %></h1>
+                <p class="email"><%= otherUser.email %></p>
+                <p>Age: <%= otherUser.age %></p>
+                <a href="/dashboard"><p><button>Back To DashBoard</button></p></a>
+            </div>
+
+        </div>
+    </div>
+    <script src="/js/sidenavbar.js"></script>
+</body>
+</html>

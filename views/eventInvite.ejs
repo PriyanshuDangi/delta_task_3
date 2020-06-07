@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+        .container{
+            max-width: 50%;
+            margin: auto;
+        }
+        .heading {
+            text-align: center;
+        }
+        .heading h1{
+            font-size: 4vmax;
+            margin-bottom: 1px;
+        }
+        .heading span{
+            color: #818181;
+        }
+        #already{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 30px;
+        }
+        #everyone{
+            width: 70%;
+            margin: auto;
+            min-height: 40px;
+            font-size: 30px;
+            padding: 5px;
+            text-align: center;
+            margin-top: 25px;
+            /* background-color: deepskyblue; */
+            /* color: #818181; */
+            cursor: pointer;
+        }
+        #every{
+            text-decoration: none;
+        }
+        #everyone:hover {
+            font-size: 2em;
+        }
+        .user{
+            width: 70%;
+            margin: 10px auto 20px;
+            min-height: 30px;
+            font-size: 24px;
+            padding-left: 15px;
+            padding-right: 15px;
+            /* text-align: center; */
+        }
+        .user span{
+            float: left;
+        }
+        .user a:hover {
+            background-color: #3e8e41;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }   
+        .user a{
+            text-decoration: none;
+            float: right;
+            color: white;
+            padding: 5px 10px;
+            background-color: #4CAF50; 
+            border: none;
+        }
+    </style>
+    <div class="main">
+        <%- include('partials/flash') %>
+        <div class="container">
+            <div class="heading">
+                <h1>Send Invitation</h1>
+                <span>for the event <%=event.title%></span>
+            </div>
+            <div>               
+                <% if(allUninvitedUsers.length == 0) {%>
+                    <div id="already">
+                        Everyone is already invited.
+                    </div>
+                <% } else {%>
+                    <a href="/event/invite/<%= event._id %>/all" id="every">
+                        <div id="everyone">Invite Everyone</div>
+                    </a>
+                    <% allUninvitedUsers.forEach((user)=>{%>
+                        <div class="user">
+                            <span><%= user.name %></span>
+                            <a href="/event/invite/<%= event._id %>/<%= user._id %>">Invite</a>
+                        </div>
+                    <%})%>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="/js/sidenavbar.js"></script>
+</body>
+</html>

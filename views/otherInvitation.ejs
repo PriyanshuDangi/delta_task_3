@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+        #main-content{
+            width: 60%;
+            min-width: 350px;
+            margin: auto;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .heading h1{
+            font-size: 4vmax;
+            margin-bottom: 1px;
+        }
+        .heading span{
+            color: #818181;
+        }
+        .jumbotron {
+            max-width: 90vw;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom:10px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        img{
+            max-width: 15vmax;
+            max-height: 15vmax;
+        }
+        header, footer {
+            text-align: center;
+            /* background-color: mediumspringgreen; */
+        }
+        #responseContainer{
+            text-align: center;
+            margin-top: 50px;
+        }
+        #responseContainer input[type=text]{
+            width: 60%;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #responseContainer button{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+        }
+        /* span {
+            color: rgba(0, 0, 0, 0.6);
+        } */
+    </style>
+    <div class="main">
+        <%- include('partials/flash') %>
+        <div id="main-content">
+            <div class="heading">
+                <h1>Invitation</h1>
+                <span>from <%=event.owner.name%></span>
+                <br>
+                <span>on <%= date %> at <%= time %></span>
+            </div>
+            <div class="jumbotron">
+                <header><%- event.header %></header>
+                <%- event.content %>
+                <footer><%- event.footer %></footer>
+            </div>
+            <% if(event.ask){ %>
+                <div id="responseContainer">
+                    <form action="/event/accept/<%-event._id%>" method="POST">
+                        <span>Response: </span>
+                        <input type="text" name="response" placeholder="how many people are coming, food preferences" required >
+                        <br>
+                        <button>Accept Invitation</button>
+                    </form>
+                    <form action="/event/reject/<%-event._id%>" method="POST">
+                        <button>Reject Invitation</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <script src="/js/sidenavbar.js"></script>
+</body>
+</html>

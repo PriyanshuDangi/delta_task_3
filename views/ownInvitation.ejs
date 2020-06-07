@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/sidenavbar.ejs') %>
+    <style>
+        #main-content{
+            width: 60%;
+            min-width: 350px;
+            margin: auto;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .heading h1{
+            font-size: 4vmax;
+            margin-bottom: 1px;
+        }
+        .heading span{
+            color: #818181;
+        }
+        .jumbotron {
+            max-width: 90vw;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom:10px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        img{
+            max-width: 15vmax;
+            max-height: 15vmax;
+        }
+        header, footer {
+            text-align: center;
+            /* background-color: mediumspringgreen; */
+        }
+        #body{
+            margin: 15px auto;
+        }
+        .userContainer{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .sended{
+            width: 35%;
+            background-color: #eeeeee;
+        }
+        .accepted{
+            width: 60%;
+            background-color: #eeeeee;
+        }
+        .main-content #info{
+            margin-top: 50px;
+        }
+        .namediv{
+            width: 90%;
+            margin: auto;
+            margin-bottom: 5px;
+            border-bottom: 1px black solid;
+        }
+        /* span {
+            color: rgba(0, 0, 0, 0.6);
+        } */
+    </style>
+    <div class="main">
+        <div id="main-content">
+            <div class="heading">
+                <h1>Title: <%=event.title%> </h1>
+                <span><%= date %> at <%= time %></span>
+            </div>
+            <div class="jumbotron">
+                <header><%- event.header %></header>
+                <div id="body"><%- event.content %></div>
+                <footer><%- event.footer %></footer>
+            </div>
+            <h2 id="info">Event Information:</h2>
+            <div class="userContainer">
+                <div class="sended items">
+                    <p><Strong>Invitation Sended To:</Strong></p>
+                    <% event.sendTo.forEach((name, index)=>{%>
+                        <div class="namediv"><%=  name %></div>
+                    <%}) %>
+                </div>
+                <div class="accepted items">
+                    <p><Strong>Users Accepted The Invitation:</Strong></p>
+                    <% event.usersAccept.forEach((name, index)=>{%>
+                        <div class="namediv">
+                            <span><%=  name %></span>&nbsp;
+                            <span>(<%= event.usersResponse[index]%>)</span>
+                        </div>
+                    <%}) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/sidenavbar.js"></script>
+</body>
+</html>

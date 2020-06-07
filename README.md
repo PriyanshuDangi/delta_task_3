@@ -23,7 +23,7 @@ Subhash just got appointed as the chairman of Festember. He's really happy and w
    npm run dev
 ```
 
-9. Navigate to http://localhost:8000/login and you should be able to view the login page
+9. Navigate to http://localhost:3000/login and you should be able to view the login page
 
 ## Tasks
 

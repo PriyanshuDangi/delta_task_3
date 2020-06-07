@@ -1,46 +1,47 @@
 @media screen and (max-width: 768px) {
-    #btn {
-        position: fixed;
-        z-index: 5;
-        top: 15px;
-        left: 15px;
-        cursor: pointer;
-        -webkit-transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
-        transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
-    }
+  #btn {
+    position: fixed;
+    z-index: 5;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    transition: left 500ms;
+  }
 
-    #btn div {
-        width: 35px;
-        height: 2px;
-        margin-bottom: 8px;
-        background-color: #00DFFC;
-        -webkit-transition: -webkit-transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
-        transition: transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
-    }
+  #btn div {
+    width: 35px;
+    height: 2px;
+    margin-bottom: 8px;
+    background-color: #00dffc;
+    transition: transform 500ms, opacity 500ms, box-shadow 250ms,
+      background-color 500ms;
+  }
 
-    #btn:hover > div { box-shadow: 0 0 1px #00DFFC; }
+  #btn:hover > div {
+    box-shadow: 0 0 1px #00dffc;
+  }
 
-    #btn.active { left: 230px; }
+  #btn.active {
+    left: 230px;
+  }
 
-    #btn.active div { background-color: #343838; }
+  /* #btn.active div {
+    background-color: #343838;
+  } */
 
-    #btn.active:hover > div { box-shadow: 0 0 1px #343838; }
+  #btn.active:hover > div {
+    box-shadow: 0 0 1px #343838;
+  }
 
-    #btn.active #top {
-        -webkit-transform: translateY(10px) rotate(-135deg);
-        -ms-transform: translateY(10px) rotate(-135deg);
-        transform: translateY(10px) rotate(-135deg);
-    }
+  #btn.active #top {
+    transform: translateY(10px) rotate(-135deg);
+  }
 
-    #btn.active #middle {
-        -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-        transform: scale(0);
-    }
+  #btn.active #middle {
+    transform: scale(0);
+  }
 
-    #btn.active #bottom {
-        -webkit-transform: translateY(-10px) rotate(-45deg);
-        -ms-transform: translateY(-10px) rotate(-45deg);
-        transform: translateY(-10px) rotate(-45deg);
-    }
+  #btn.active #bottom {
+    transform: translateY(-10px) rotate(-45deg);
+  }
 }
